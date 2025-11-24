@@ -19,6 +19,15 @@ afterAll((done) => {
   server.close(done);
 });
 
+test('GET /time returns ISO timestamp', async () => {
+  const response = await request(app).get('/time');
+  expect(response.statusCode).toBe(200);
+
+  const isoRegex =
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+
+  expect(response.body.time).toMatch(isoRegex);
+});
 describe("API Endpoints", () => {
   it("should return a 200 OK status and welcome message for the root endpoint", async () => {
     // Test against the running server

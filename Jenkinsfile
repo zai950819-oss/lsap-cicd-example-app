@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node-lts'
+        nodejs 'node-lts'   // must match tool name in Jenkins
     }
 
     stages {

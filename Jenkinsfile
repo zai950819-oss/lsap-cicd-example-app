@@ -33,7 +33,7 @@ pipeline {
 
         stage('Run Container & Health Check') {
             steps {
-                sh 'docker run -d -p 8081:8081 --name cicd-app cicd-lab-app'
+                sh 'docker run -d -p 8081:3000 --name cicd-app cicd-lab-app'
                 sh 'sleep 3'
                 sh 'curl -f http://localhost:8081/health'
             }
